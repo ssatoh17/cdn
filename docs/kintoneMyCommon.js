@@ -24,8 +24,9 @@ jQuery.noConflict();
         
         //kintone.api(kintone.api.url('/k/v1/record', true), 'GET', body, function(resp) {
         //kintone.api(kintone.api.url('/k/guest/47/v1/record', true), 'GET', body, function(resp) {
-        kintone.api(kintone.api.url('/k/guest/47/v1/records', true), 'GET', body, function(resp) {    // success
-            //console.log(resp);
+        //kintone.api(kintone.api.url('/k/guest/47/v1/records', true), 'GET', body, function(resp) {    // success
+        kintone.api(kintone.api.url('/k/v1/records', true), 'GET', body, function(resp) {//🔴urlメソッドを使えば、guestスペースかどうかは無関係！（というか、guest/スペースID を指定すると動かなくなる場合があるので注意）
+            //console.log(resp);
             //console.log(resp.records[0].レコード番号.value);
             //レコードID = resp.レコード番号; // undefined
             レコードID = resp.records[0].レコード番号.value;
