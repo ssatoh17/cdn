@@ -5,7 +5,7 @@ if(location.href.indexOf("/guest/")!=-1)isGuestSpace = true;
 (function($) {
    "use strict";
    kintone.events.on("app.record.index.show", function(e) {
-      var 更新日時等 = 'ver0.904 共通JS更新日時 平成30年1月4日 午前9時57分';
+      var 更新日時等 = 'ver0.910 共通JS更新日時 平成30年1月4日 15時07分';
         $('body').append('<div>'+更新日時等+'</div>');
         console.info("共通Javascript更新日時＝"+更新日時等);
 
