@@ -2,7 +2,7 @@ jQuery.noConflict();
 (function($) {
    "use strict";
    kintone.events.on("app.record.index.show", function(e) {
-      var 更新日時等 = 'ver0.901 共通JS更新日時 平成30年1月4日 午前9時49分';
+      var 更新日時等 = 'ver0.903 共通JS更新日時 平成30年1月4日 午前9時52分';
         $('body').append('<div>'+更新日時等+'</div>');
         console.log(更新日時等);
 
@@ -32,7 +32,7 @@ jQuery.noConflict();
             //アプリ「アプリ一覧」のレコードのうち、アプリIDが appId(自身のアプリID) のレコードの詳細画面を開く
             //一覧画面の上部に追加（本当は、「・・・」のメニューの中に追加したい
             //$('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'">app更新履歴他２</a>');
-            $('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。" style="margin-bottom:14px;"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;" alt="アプリ更新情報、アプリ概要等を表示します。"></a>');           
+            $('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;margin-bottom:14px;" alt="アプリ更新情報、アプリ概要等を表示します。"></a>');           
             $('.gaia-argoui-app-toolbar').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;"></a>');           
             $('.gaia-argoui-pulldown').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。">app更新履歴他</a>');
             $('.gaia-argoui-pulldown').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。">app更新履歴他</a>');
