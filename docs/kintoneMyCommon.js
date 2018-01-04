@@ -30,7 +30,7 @@ jQuery.noConflict();
             //アプリ「アプリ一覧」のレコードのうち、アプリIDが appId(自身のアプリID) のレコードの詳細画面を開く
             //一覧画面の上部に追加（本当は、「・・・」のメニューの中に追加したい
             //$('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'">app更新履歴他２</a>');
-            $('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'"><img src="https://ssatoh17.github.io/cdn/img/info-icon.png" style="height:30px;"></a>');           
+            $('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:30px;"></a>');           
             $('.gaia-argoui-pulldown').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'">app更新履歴他</a>');
             $('.gaia-argoui-pulldown').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'">app更新履歴他</a>');
         }, function(error) {    // error
