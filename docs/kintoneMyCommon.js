@@ -2,7 +2,7 @@ jQuery.noConflict();
 (function($) {
    "use strict";
    kintone.events.on("app.record.index.show", function(e) {
-        $('body').append('<div>abcdef</div>');
+        $('body').append('<div>共通JS更新日時 平成30年1月4日 午前9時40分</div>');
 
         var アプリ一覧アプリid = 2370
         var appId = kintone.app.getId();
