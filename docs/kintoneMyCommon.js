@@ -1,4 +1,8 @@
+//どのアプリも、一覧画面からアプリ概要・詳細情報、更新履歴へのリンクを追加するためのもの
+//アプリ「アプリまとめ」でこれらの情報を管理する。
+
 jQuery.noConflict();
+//2018-01-04 追加（ kintone.api.urlメソッドだけでは適応できなかったため）
 var isGuestSpace=false;
 if(location.href.indexOf("/guest/")!=-1)isGuestSpace = true;
 console.log("ゲストスペースか否か" + isGuestSpace);
@@ -26,23 +30,20 @@ console.log("ゲストスペースか否か" + isGuestSpace);
             //"fields": ["$id", "アプリID"] //返ってくるフィールドを指定する場合
         };
         
+        //kintone.api(kintone.api.url('/k/v1/record', true), 'GET', body, function(resp) {
         var apiStr = '/k/v1/records';
         if(isGuestSpace == false) apiStr = '/k/guest/47/v1/records';
-        //kintone.api(kintone.api.url('/k/v1/record', true), 'GET', body, function(resp) {
-        //kintone.api(kintone.api.url('/k/guest/47/v1/record', true), 'GET', body, function(resp) {
-        //kintone.api(kintone.api.url('/k/guest/47/v1/records', true), 'GET', body, function(resp) {    // success
-        kintone.api(kintone.api.url(apiStr, true), 'GET', body, function(resp) {//🔴urlメソッドを使えば、guestスペースかどうかは無関係！（というか、guest/スペースID を指定すると動かなくなる場合があるので注意）
+        kintone.api(kintone.api.url(apiStr, true), 'GET', body, function(resp) {//🔴urlメソッドを使えば、「guestスペースかどうかは無関係」は嘘だった・・・
             //console.log(resp);
-            //console.log(resp.records[0].レコード番号.value);
-            //レコードID = resp.レコード番号; // undefined
             レコードID = resp.records[0].レコード番号.value;
             //アプリ「アプリ一覧」のレコードのうち、アプリIDが appId(自身のアプリID) のレコードの詳細画面を開く
             //一覧画面の上部に追加（本当は、「・・・」のメニューの中に追加したいが、できなかった
             $('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;margin-bottom:14px;margin-left:-13px;" alt="アプリ更新情報、アプリ概要等を表示します。"></a>');           
             //$('.gaia-argoui-app-toolbar').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;"></a>'); //左側に表示される          
+            //以下は🔴無効
             //$('.gaia-argoui-pulldown').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。">app更新履歴他</a>'); //🔴無効（表示されない）
             //$('.gaia-argoui-pulldown').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。">app更新履歴他</a>');  //🔴無効（表示されない）
-        }, function(error) {    // error
+        }, function(error) {    //❌error時
             console.log(error);
         });
    });
