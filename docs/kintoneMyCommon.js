@@ -46,13 +46,13 @@ console.log("ゲストスペースか否か" + isGuestSpace);
             //一覧画面の上部に追加（本当は、「・・・」のメニューの中に追加したいが、できなかった
             $('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;margin-bottom:14px;margin-left:-13px;" alt="アプリ更新情報、アプリ概要等を表示します。"></a>');           
            
-            //ポップアップメニューの表示 http://glow-factory.com/blog_web/jquery/jquerypopmenu/
+            // ▲ ポップアップメニューの表示 http://glow-factory.com/blog_web/jquery/jquerypopmenu/
             //$('.gaia-argoui-app-toolbar').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');   
             //$('.gaia-argoui-app-toolbar').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>更新履歴</li><li>バグ</li></ul></div>');   
             //$('.gaia-argoui-app-toolbar').append('<span class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>更新履歴</li><li>バグ</li></ul></span>');   
-            $('.gaia-argoui-app-toolbar').prepend('<span class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>更新履歴</li><li>バグ</li></ul></span>');   
+            //$('.gaia-argoui-app-toolbar').prepend('<span class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>更新履歴</li><li>バグ</li></ul></span>');   
             //$('.gaia-argoui-app-toolbar').append('<div>test</div>');
-            $('.popmenu-box').popmenu();
+            //$('.popmenu-box').popmenu();
 
             //$('.gaia-argoui-app-toolbar').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;"></a>'); //左側に表示される          
             //以下は🔴無効
