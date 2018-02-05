@@ -11,8 +11,8 @@ console.log("ゲストスペースか否か" + isGuestSpace);
    "use strict";
    
    //ポップアップメニューの表示 http://glow-factory.com/blog_web/jquery/jquerypopmenu/
-   
-   $('body').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');
+   // $('body')
+   $('.gaia-argoui-app-toolbar').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');
    
    $('.popmenu-box').popmenu();
    
