@@ -73,7 +73,8 @@ body{
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
-	line-height: 1;
+	/* line-height: 1; */
+	line-height: 6; /* 2018-02-06 変更 */
   	padding: 0 5px 0 5px;
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
