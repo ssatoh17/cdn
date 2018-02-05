@@ -1,0 +1,156 @@
+
+/*---------------------------------------------------------
+  						reset
+---------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {display: block;}
+body {	line-height: 1.5;}
+ol, ul {list-style: none;}
+blockquote, q {	quotes: none;}
+blockquote:before, blockquote:after,
+q:before, q:after {content: '';content: none;}
+table {	border-collapse: collapse;border-spacing: 0;}
+/*---------------------------------------------------------
+  						clearfix
+---------------------------------------------------------*/
+.clearfix:after {
+    content: "."; 
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix {
+    min-height: 1px;
+}
+.clea{
+	clear:both;	
+	}
+* html .clearfix {
+    height: 1px;
+    /*¥*//*/
+    height: auto;
+    overflow: hidden;
+    /**/
+}
+
+body{
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	}
+/*---------------------------------------------------------
+  						web font
+---------------------------------------------------------*/
+@font-face {
+	font-family: 'glow-ico-font';
+	src:url('fonts/glow-ico-font.eot?-ashfq7');
+	src:url('fonts/glow-ico-font.eot?#iefix-ashfq7') format('embedded-opentype'),
+		url('fonts/glow-ico-font.woff?-ashfq7') format('woff'),
+		url('fonts/glow-ico-font.ttf?-ashfq7') format('truetype'),
+		url('fonts/glow-ico-font.svg?-ashfq7#glow-ico-font') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/*---------------------------------------------------------
+  						web icon
+---------------------------------------------------------*/
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'glow-ico-font';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+  	padding: 0 5px 0 5px;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-home:before { content: "\e001" }
+.icon-pencil:before { content: "\e00a" }
+.icon-quill:before { content: "\e00d" }
+.icon-image:before { content: "\e019" }
+.icon-images:before { content: "\e01a" }
+.icon-new:before { content: "\e03e" }
+.icon-file:before { content: "\e04c" }
+.icon-profile:before { content: "\e04d" }
+.icon-folder:before { content: "\e062" }
+.icon-tag:before { content: "\e075" }
+.icon-address-book:before { content: "\e09f" }
+.icon-envelope:before { content: "\e0a1" }
+.icon-alarm:before { content: "\e0b5" }
+.icon-calendar:before { content: "\e0ba" }
+.icon-bubble:before { content: "\e0e2" }
+.icon-bubbles:before { content: "\e0e3" }
+.icon-user:before { content: "\e112" }
+.icon-users:before { content: "\e113" }
+.icon-vcard:before { content: "\e11a" }
+.icon-quotes-left:before { content: "\e11c" }
+.icon-quotes-right:before { content: "\e11d" }
+.icon-cog:before { content: "\e146" }
+.icon-medal:before { content: "\e16b" }
+.icon-medal2:before { content: "\e16c" }
+.icon-medal3:before { content: "\e16d" }
+.icon-trophy-star:before { content: "\e171" }
+.icon-list:before { content: "\e1bd" }
+.icon-list2:before { content: "\e1be" }
+.icon-grid:before { content: "\e1c1" }
+.icon-menu:before { content: "\e1c8" }
+.icon-menu2:before { content: "\e1c9" }
+.icon-eye:before { content: "\e1e9" }
+.icon-checkmark:before { content: "\e25a" }
+.icon-arrow-up:before { content: "\e296" }
+.icon-arrow-right:before { content: "\e297" }
+.icon-arrow-down:before { content: "\e298" }
+.icon-newtab:before { content: "\e319" }
+.icon-newtab2:before { content: "\e31a" }
+.icon-mail:before { content: "\e324" }
+.icon-googleplus:before { content: "\e329" }
+.icon-facebook:before { content: "\e32d" }
+.icon-twitter:before { content: "\e331" }
+.icon-feed:before { content: "\e334" }
+.icon-wordpress:before { content: "\e34f" }
+/*sytle*/
+#header{
+	background:#333;
+	padding:15px;
+	color:#fff;
+	text-align:center;
+	margin-bottom:50px;
+	}
+.content{
+	width:960px;
+	margin-left:auto;
+	margin-right:auto;	
+	}
+span.icon-menu{
+	font-size:36px;	
+	}
+.popmenu-box{
+	margin-top:25px;
+	margin-bottom:25px;	
+	}
+.popmenu-box2{
+	margin-top:25px;
+	margin-bottom:25px;	
+	}
+#popmenu li{
+	line-height:1;	
+	}
+#popmenu li span{
+	font-size:50px !important;
+	line-height:1.5;
+	}
