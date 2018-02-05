@@ -9,8 +9,15 @@ console.log("ゲストスペースか否か" + isGuestSpace);
 
 (function($) {
    "use strict";
+   
+   //ポップアップメニューの表示 http://glow-factory.com/blog_web/jquery/jquerypopmenu/
+   
+   $('body').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');
+   
+   $('.popmenu-box').popmenu();
+   
    kintone.events.on("app.record.index.show", function(e) {
-      var 更新日時等 = 'ver0.910 共通JS更新日時 平成30年1月4日 15時08分';
+      var 更新日時等 = 'ver0.920 共通JS更新日時 平成30年2月6日 02時17分';
         $('body').append('<div>'+更新日時等+'</div>');
         console.info("共通Javascript更新日時＝"+更新日時等);
 
