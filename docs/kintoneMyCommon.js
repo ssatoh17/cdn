@@ -16,7 +16,7 @@ console.log("ゲストスペースか否か" + isGuestSpace);
    //$('.popmenu-box').popmenu();
    
    kintone.events.on("app.record.index.show", function(e) {
-      var 更新日時等 = 'ver0.922 共通JS更新日時 平成30年2月6日 02時26分';
+      var 更新日時等 = 'ver0.923 共通JS更新日時 平成30年2月6日 02時29分';
         $('body').append('<div>'+更新日時等+'</div>');
         console.info("共通Javascript更新日時＝"+更新日時等);
 
@@ -48,6 +48,7 @@ console.log("ゲストスペースか否か" + isGuestSpace);
            
             //ポップアップメニューの表示 http://glow-factory.com/blog_web/jquery/jquerypopmenu/
             $('.gaia-argoui-app-toolbar').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');   
+            $('.gaia-argoui-app-toolbar').append('<div>test</div>');
             $('.popmenu-box').popmenu();
 
             //$('.gaia-argoui-app-toolbar').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;"></a>'); //左側に表示される          
