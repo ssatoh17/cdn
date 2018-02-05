@@ -11,10 +11,9 @@ console.log("ゲストスペースか否か" + isGuestSpace);
    "use strict";
    
    //ポップアップメニューの表示 http://glow-factory.com/blog_web/jquery/jquerypopmenu/
-   // $('body')
-   $('.gaia-argoui-app-toolbar').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');
-   
-   $('.popmenu-box').popmenu();
+   //❌ココに置いてもだめ！！
+   //$('.gaia-argoui-app-toolbar').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');   
+   //$('.popmenu-box').popmenu();
    
    kintone.events.on("app.record.index.show", function(e) {
       var 更新日時等 = 'ver0.921 共通JS更新日時 平成30年2月6日 02時22分';
@@ -46,6 +45,11 @@ console.log("ゲストスペースか否か" + isGuestSpace);
             //アプリ「アプリ一覧」のレコードのうち、アプリIDが appId(自身のアプリID) のレコードの詳細画面を開く
             //一覧画面の上部に追加（本当は、「・・・」のメニューの中に追加したいが、できなかった
             $('.gaia-argoui-app-toolbar').append('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;margin-bottom:14px;margin-left:-13px;" alt="アプリ更新情報、アプリ概要等を表示します。"></a>');           
+           
+            //ポップアップメニューの表示 http://glow-factory.com/blog_web/jquery/jquerypopmenu/
+            $('.gaia-argoui-app-toolbar').append('<div class="popmenu-box"><span class="pop_ctrl icon-menu"></span><ul id="popmenu"><li>ホーム</li><li>投稿</li><li>ログイン</li><li>新着</li><li>画像</li><li>メール</li><li>Facebook</li><li>Twitter</li><li>設定</li></ul></div>');   
+            $('.popmenu-box').popmenu();
+
             //$('.gaia-argoui-app-toolbar').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。"><img src="https://ssatoh17.github.io/cdn/img/Info-icon.png" style="height:20px;"></a>'); //左側に表示される          
             //以下は🔴無効
             //$('.gaia-argoui-pulldown').prepend('<a target="_blank" href="https://musashi.cybozu.com/k/guest/47/'+アプリ一覧アプリid+'/show#record='+レコードID+'" title="アプリ更新情報、アプリ概要等を表示します。">app更新履歴他</a>'); //🔴無効（表示されない）
