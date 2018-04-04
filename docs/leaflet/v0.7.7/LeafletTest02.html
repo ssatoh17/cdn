@@ -22,6 +22,9 @@ body { width: 100%; height: 100%; margin: 0; }
         [30.3748331, 130.9574997],
         14
     );
+    
+    var infobox = new khtml.maplib.overlay.InfoWindow({content: "This is a marker-infobox!"});
+    
     //地図タイルの設定
     L.tileLayer(
         'http://{s}.tile.osm.org/{z}/{x}/{y}.png', 
@@ -38,8 +41,7 @@ body { width: 100%; height: 100%; margin: 0; }
 //      popupAnchor: [0,-16]
 //  }))
     .addTo(map)
-//    .bindPopup("<h3>test1</h3><p>hogehoge</p>")
-    .bindPopup("<h3>test11🔵（</h3><p>hogehoge</p><a href='https://musashi.cybozu.com/k/2535/show#record=62'>minimini巣鴨店</a>")
+    //.bindPopup("<h3>test11🔵（</h3><p>hogehoge</p><a href='https://musashi.cybozu.com/k/2535/show#record=62'>minimini巣鴨店</a>")
     //.openPopup();
     .attachEvent('click', function() {
     	infobox.open(map, this);
