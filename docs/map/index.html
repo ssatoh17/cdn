@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>位置情報取得サンプル</title>
+
+  <script>
+    // Geolocation APIに対応している
+    if (navigator.geolocation) {
+      //alert("この端末では位置情報が取得できます");
+      getPosition();
+    // Geolocation APIに対応していない
+    } else {
+      alert("この端末では位置情報が取得できません");
+    }
+
+    // 現在地取得処理
+    function getPosition() {
+      // 現在地を取得
+      navigator.geolocation.getCurrentPosition(
+        // 取得成功した場合
+        function(position) {
+            //alert("緯度:"+position.coords.latitude+",経度"+position.coords.longitude);
+            var k = 0.1;
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            var latMin = position.coords.latitude - k;
+            var lonMin = position.coords.longitude - k;
+            var latMax = position.coords.latitude + k;
+            var lonMax = position.coords.longitude + k;
+            //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%22' + latMin + '%22%20and%20f5362384%20%3E%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3E%3D%20%22' + lonMax +'%22';
+            //https://musashi.cybozu.com/k/2589/?view=5523623&q=f5362384%20%3E=%20%2235.5%22%20and%20f5362384%20%3C=%20%2235.6%22%20and%20f5362385%20%3E=%20%22139.5454822%22#sort_0=f9157&order_0=desc&size=20
+            //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%22' + latMin + '%22%20and%20f5362384%20%3E%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3E%3D%20%22' + lonMax +'%22';
+            //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3E=%20%22' + latMin + '%22%20and%20f5362384%20%3C%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3C%3D%20%22' + lonMax +'%22'; //◎動いた
+            //現在位置はURLパラメータ（lat、lon）として埋め込んでいる（何かに使用できるようにするため）
+            var url = 'https://musashi.cybozu.com/k/2589/?lat=' + lat + '&lon=' + lon + '&q=f5362384%20%3E=%20%22' + latMin + '%22%20and%20f5362384%20%3C%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3C%3D%20%22' + lonMax +'%22';
+            //リダイレクト
+            //https://getpocket.com/redirect?url=https%3A%2F%2Fmusashi.cybozu.com%2Fk%2F2589%2F%3Fq%3Df5362384%2520%253C%3D%2520%252235%2522%2520and%2520f5362385%2520%253E%3D%2520%2522135%2522&formCheck=b2e505233ac0857b23be7a01bdce4035
+            //https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%2235%22%20and%20f5362385%20%3E=%20%22135%22
+            //https://musashi.cybozu.com/k/2589/?q=f5362384 <= "35" and f5362385 >= "135"
+            // https://musashi.cybozu.com/k/2589/?view=5523623&q=f5362384 <= "35.7" and f5362384 >= "35.6" and f5362385 >= "139.5454822"#sort_0=f9157&order_0=desc&size=20
+            
+            location.href = url;
+        },
+        // 取得失敗した場合
+        function(error) {
+          switch(error.code) {
+            case 1: //PERMISSION_DENIED
+              alert("位置情報の利用が許可されていません");
+              break;
+            case 2: //POSITION_UNAVAILABLE
+              alert("現在位置が取得できませんでした");
+              break;
+            case 3: //TIMEOUT
+              alert("タイムアウトになりました");
+              break;
+            default:
+              alert("その他のエラー(エラーコード:"+error.code+")");
+              break;
+          }
+        }
+      );
+    }
+  </script>
+</head>
+<body>
+  <h1>位置情報取得サンプル</h1>
+  <button onclick="getPosition();">位置情報を取得する</button>
+</body>
+</html>
