@@ -59,7 +59,8 @@
                   console.log(xhr.responseXML.documentElement.getElementsByTagName("status"));
                   console.log(xhr.responseXML.documentElement.getElementsByTagName("result"));
                   
-                  var document = xhr.responseXML.documentElement;
+                  //var document = xhr.responseXML.documentElement;
+                  var document = xhr.responseXML;
                   //var result = document.evaluate('/html', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
                   var result = document.evaluate('/rgeocode', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
                   console.info(result.singleNodeValue);
