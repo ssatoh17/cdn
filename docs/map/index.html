@@ -58,8 +58,12 @@
                   console.log(xhr.responseXML.documentElement.getElementsByTagName("rgeocode"));
                   console.log(xhr.responseXML.documentElement.getElementsByTagName("status"));
                   console.log(xhr.responseXML.documentElement.getElementsByTagName("result"));
-                  console.log(xhr.responseXML.documentElement.getElementsByTagName("pname"));
-                  console.log(xhr.responseXML.documentElement.getElementsByTagName("pname")[0]);
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("pname").innerHTML);
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("pname")[0].innerHTML);
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("mname").innerHTML);
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("mname")[0].innerHTML);
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("section").innerHTML);
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("section")[0].innerHTML);
                   
                   //var document = xhr.responseXML.documentElement;
                   var document = xhr.responseXML;
