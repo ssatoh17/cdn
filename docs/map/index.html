@@ -24,6 +24,12 @@
             var k = 0.1;
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
+          //https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?lat=35.68381981&lon=139.77456498&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-
+            
+            var url = 'https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?lat='+ lat +'&lon='+ lon +'&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-';
+            window.open(url);
+          
+              
             var latMin = position.coords.latitude - k;
             var lonMin = position.coords.longitude - k;
             var latMax = position.coords.latitude + k;
