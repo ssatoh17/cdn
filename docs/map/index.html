@@ -73,11 +73,12 @@
                   //xmlDoc = parser.parseFromString(xhr.response, "application/xml");
                   //xmlDoc = parser.parseFromString(xhr.documentElement, "application/xml");
                   xmlDoc = parser.parseFromString(xhr.responseXML.documentElement, "application/xml");
-                  var r = xmlDoc.evaluate("//name", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                  var r = xmlDoc.evaluate("//pname", xmlDoc, null, XPathResult.ANY_TYPE, null);
                   var s = [];
                   while ((ret = r.iterateNext()) !== null){
                       s.push(ret.textContent);
                   }
+                  console.log("evaluate結果：");
                   console.log(s); // ["読売新聞", "NHK広報局"]
                   
                   console.log(xmlDoc.documentElement);
