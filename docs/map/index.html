@@ -109,7 +109,7 @@
         }
       );
     }
-          /**
+      /**
       * XML2JSObject
       */
       function serialize(dom) {
@@ -123,6 +123,16 @@
           })
         };
         return obj;
+      }
+      /**
+      * テスト用のログ関数
+      */
+      function log(dom, indent) {
+        indent = (indent || "") + "  ";
+        console.log(indent + dom.tagName, Array.prototype.join.call(dom.attributes, ", "));
+        Array.prototype.forEach.call(dom.children || [], function (e) {
+          log(e, indent)
+        });
       }
   </script>
 </head>
