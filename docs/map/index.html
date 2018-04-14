@@ -52,9 +52,9 @@
                   console.log(xhr.responseXML);
                   parser = new DOMParser();
                   xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml");
-                  console.log(xmlDoc);
-                  console.log(xmlDoc.rgeocode);
-                  alert(xhr.responseXML);
+                  console.log(xmlDoc.documentElement);
+                  //console.log(xmlDoc.rgeocode);
+                  alert(xmlDoc.documentElement);
                 }
               }
             };
