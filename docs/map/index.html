@@ -32,8 +32,12 @@
             //lat=35.7080677&lon=139.752167  
           //var resp = window.open(_url);
             //console.log(resp);
-          
-          
+            
+          var div = document.createElement("div");
+          div.innerHTML = "情報取得中";
+          document.body.appendChild(div); //body要素に追加
+
+            
             var xhr = new XMLHttpRequest();
             xhr.open('GET', _url, true);
             // If specified, responseType must be empty string or "document"
@@ -65,16 +69,8 @@
                      console.log(e.target.innerText);
                   };
                   document.body.appendChild(btn); //body要素に追加
-                  
-                  
-                  console.log(xmlDoc.documentElement);
-                  console.log("pname=");
-                  console.log(xmlDoc.children);
-                  log(xmlDoc.children[0]);
-                  //console.log(JSON.stringify(serialize(xmlDoc.children[0]), null, '  '))
-                  console.log(xmlDoc.getElementsByTagName("pname"));
-                  console.log(xmlDoc.getElementsByTagName("result"));
-                  console.log(xmlDoc.getElementsByTagName("rgeocode"));                  
+                                    
+                  //log(xmlDoc.children[0]);
                 }
               }
             };
