@@ -30,6 +30,28 @@
             var resp = window.open(_url);
             console.log(resp);
           
+          
+            var xhr = new XMLHttpRequest();
+            //xhr.open('GET', '/server', true);
+            xhr.open('GET', _url, true);
+
+            // If specified, responseType must be empty string or "document"
+            xhr.responseType = 'document';
+
+            // overrideMimeType() can be used to force the response to be parsed as XML
+            xhr.overrideMimeType('text/xml');
+
+            xhr.onload = function () {
+              if (xhr.readyState === xhr.DONE) {
+                if (xhr.status === 200) {
+                  console.log(xhr.response);
+                  console.log(xhr.responseXML);
+                }
+              }
+            };
+            xhr.send(null);
+          
+          
               
             var latMin = position.coords.latitude - k;
             var lonMin = position.coords.longitude - k;
