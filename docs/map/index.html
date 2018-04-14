@@ -53,7 +53,12 @@
                   console.log("xhr.responseXML = 下に続く");
                   console.log(xhr.responseXML);
                   console.log("xhr.responseXML.documentElement = 下に続く");
-                  console.log(xhr.responseXML.documentElement);
+                  
+                  console.log(xhr.responseXML.documentElement); //🔵OK!
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("rgeocode"));
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("status"));
+                  console.log(xhr.responseXML.documentElement.getElementsByTagName("result"));
+                  
                   var parser = new DOMParser();
                   //xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml"); //？
                   //xmlDoc = parser.parseFromString(xhr.responseXML, "application/xml");
@@ -144,7 +149,7 @@
   </script>
 </head>
 <body>
-  <h1>位置情報取得（リバースジオコーディングもする）⇒kintoneアプリで周辺位置を表示する</h1>
+  <h1>🌟位置情報取得（リバースジオコーディングもする）⇒kintoneアプリで周辺位置を表示する</h1>
   <button onclick="getPosition();">位置情報を取得する</button>
 </body>
 </html>
