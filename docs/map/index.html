@@ -67,13 +67,17 @@
                   result = document.evaluate('//result', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
                   console.info(result.singleNodeValue);
                   
+                  var xml = '<?xml version="1.0" encoding="UTF-8"?><root><twitter><account><name>読売新聞</name><id>Yomiuri_Online</id></account><account><name>NHK広報局</name><id>NHK_PR</id></account></twitter></root>';
+
                   var parser = new DOMParser();
                   //xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml"); //？
                   //xmlDoc = parser.parseFromString(xhr.responseXML, "application/xml");
                   //xmlDoc = parser.parseFromString(xhr.response, "application/xml");
                   //xmlDoc = parser.parseFromString(xhr.documentElement, "application/xml");
-                  xmlDoc = parser.parseFromString(xhr.responseXML.documentElement, "application/xml");
-                  var r = xmlDoc.evaluate("//pname", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                  //xmlDoc = parser.parseFromString(xhr.responseXML.documentElement, "application/xml");
+                  xmlDoc = parser.parseFromString(xml, "text/xml");
+                  //var r = xmlDoc.evaluate("//pname", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                  var r = xmlDoc.evaluate("//name", xmlDoc, null, XPathResult.ANY_TYPE, null);
                   var s = [];
                   while ((ret = r.iterateNext()) !== null){
                       s.push(ret.textContent);
