@@ -26,8 +26,8 @@
             var lon = position.coords.longitude;
           //https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?lat=35.68381981&lon=139.77456498&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-
             
-            var url = 'https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?lat='+ lat +'&lon='+ lon +'&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-';
-            window.open(url);
+            var _url = 'https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?lat='+ lat +'&lon='+ lon +'&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-';
+            window.open(_url);
           
               
             var latMin = position.coords.latitude - k;
@@ -46,7 +46,7 @@
             //https://musashi.cybozu.com/k/2589/?q=f5362384 <= "35" and f5362385 >= "135"
             // https://musashi.cybozu.com/k/2589/?view=5523623&q=f5362384 <= "35.7" and f5362384 >= "35.6" and f5362385 >= "139.5454822"#sort_0=f9157&order_0=desc&size=20
             
-            location.href = url;
+            //location.href = url;
         },
         // 取得失敗した場合
         function(error) {
