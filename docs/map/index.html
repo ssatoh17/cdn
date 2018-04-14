@@ -7,11 +7,11 @@
   <script>
     // Geolocation APIに対応している
     if (navigator.geolocation) {
-      //alert("この端末では位置情報が取得できます");
-      getPosition();
+        //alert("この端末では位置情報が取得できます");
+        getPosition();
     // Geolocation APIに対応していない
     } else {
-      alert("この端末では位置情報が取得できません");
+        alert("この端末では位置情報が取得できません");
     }
 
     // 現在地取得処理
@@ -26,22 +26,19 @@
             var lon = position.coords.longitude;
           //https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?lat=35.68381981&lon=139.77456498&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-
            
-            // クロスドメインの制約で取得できなかった・・・
+            // Yahooだとクロスドメインの制約で取得できなかった・・・⇒ https://www.finds.jp を利用
             //var _url = 'https://map.yahooapis.jp/geoapi/V1/reverseGeoCoder?lat='+ lat +'&lon='+ lon +'&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-';
             var _url = 'https://www.finds.jp/ws/rgeocode.php?lat='+ lat +'&lon='+ lon +'&appid=dj0zaiZpPUNteUE3UzlEWmJ0eCZzPWNvbnN1bWVyc2VjcmV0Jng9MTU-';
             //lat=35.7080677&lon=139.752167  
-          //var resp = window.open(_url);
-            //console.log(resp);
+            //var resp = window.open(_url);
             
-          var div = document.createElement("div");
-          div.innerHTML = "情報取得中";
-          document.body.appendChild(div); //body要素に追加
-
+            var div = document.createElement("div");
+            div.innerHTML = "位置情報取得中です・・・";
+            document.body.appendChild(div); 
             
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', _url, true);
-            // If specified, responseType must be empty string or "document"
-            xhr.responseType = 'document';
+            xhr.open('GET', _url, true);            
+            xhr.responseType = 'document'; // If specified, responseType must be empty string or "document"
             //xhr.responseType = 'jsonp'; // 🔴エラー・・・（クロスドメイン対策のつもりだったが）
             // overrideMimeType() can be used to force the response to be parsed as XML
             xhr.overrideMimeType('text/xml');
@@ -51,8 +48,7 @@
               if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === 200) {
                   
-                  console.log(xhr.responseXML.documentElement); //🔵OK!
-                  
+                  console.log(xhr.responseXML.documentElement); //🔵OK!                  
                   var 都道府県 = xhr.responseXML.documentElement.getElementsByTagName("pname")[0].innerHTML;
                   var 市区町村 = xhr.responseXML.documentElement.getElementsByTagName("mname")[0].innerHTML;
                   var 番地 = xhr.responseXML.documentElement.getElementsByTagName("section")[0].innerHTML;
@@ -60,6 +56,7 @@
                   console.log(市区町村); //市区町村
                   console.log(番地); //セクション
                   
+                  //取得した情報でボタンを追加
                   var btn = document.createElement("button");
                   btn.setAttribute("id","testButton");
                   btn.type = 'button';
@@ -69,30 +66,36 @@
                      console.log(e.target.innerText);
                   };
                   document.body.appendChild(btn); //body要素に追加
-                                    
-                  //log(xmlDoc.children[0]);
+                  
+                  //kintone用URLを作成
+                  var latMin = position.coords.latitude - k;
+                  var lonMin = position.coords.longitude - k;
+                  var latMax = position.coords.latitude + k;
+                  var lonMax = position.coords.longitude + k;
+                  //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%22' + latMin + '%22%20and%20f5362384%20%3E%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3E%3D%20%22' + lonMax +'%22';
+                  //https://musashi.cybozu.com/k/2589/?view=5523623&q=f5362384%20%3E=%20%2235.5%22%20and%20f5362384%20%3C=%20%2235.6%22%20and%20f5362385%20%3E=%20%22139.5454822%22#sort_0=f9157&order_0=desc&size=20
+                  //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%22' + latMin + '%22%20and%20f5362384%20%3E%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3E%3D%20%22' + lonMax +'%22';
+                  //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3E=%20%22' + latMin + '%22%20and%20f5362384%20%3C%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3C%3D%20%22' + lonMax +'%22'; //◎動いた
+                  //現在位置はURLパラメータ（lat、lon）として埋め込んでいる（何かに使用できるようにするため）
+                  //var url = 'https://musashi.cybozu.com/k/2589/?lat=' + lat + '&lon=' + lon + '&q=f5362384%20%3E=%20%22' + latMin + '%22%20and%20f5362384%20%3C%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3C%3D%20%22' + lonMax +'%22';
+                  var url = 'https://musashi.cybozu.com/k/2589/?lat=' + lat + '&lon=' + lon + 
+                      '&q=f5362384%20%3E=%20%22' + latMin + '%22%20and%20f5362384%20%3C%3D%20%22' + latMax +
+                      '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3C%3D%20%22' +
+                      lonMax +'%22' + encodeURIComponent("&都道府県=" + 都道府県 + "&市区町村=" + 市区町村 + "&番地=" + 番地);
+                  //リダイレクト
+                  //https://getpocket.com/redirect?url=https%3A%2F%2Fmusashi.cybozu.com%2Fk%2F2589%2F%3Fq%3Df5362384%2520%253C%3D%2520%252235%2522%2520and%2520f5362385%2520%253E%3D%2520%2522135%2522&formCheck=b2e505233ac0857b23be7a01bdce4035
+                  //https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%2235%22%20and%20f5362385%20%3E=%20%22135%22
+                  //https://musashi.cybozu.com/k/2589/?q=f5362384 <= "35" and f5362385 >= "135"
+                  // https://musashi.cybozu.com/k/2589/?view=5523623&q=f5362384 <= "35.7" and f5362384 >= "35.6" and f5362385 >= "139.5454822"#sort_0=f9157&order_0=desc&size=20
+
+                  //location.href = url;
+                  window.open(url);
+
                 }
               }
             };
             xhr.send(null);
                                  
-            var latMin = position.coords.latitude - k;
-            var lonMin = position.coords.longitude - k;
-            var latMax = position.coords.latitude + k;
-            var lonMax = position.coords.longitude + k;
-            //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%22' + latMin + '%22%20and%20f5362384%20%3E%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3E%3D%20%22' + lonMax +'%22';
-            //https://musashi.cybozu.com/k/2589/?view=5523623&q=f5362384%20%3E=%20%2235.5%22%20and%20f5362384%20%3C=%20%2235.6%22%20and%20f5362385%20%3E=%20%22139.5454822%22#sort_0=f9157&order_0=desc&size=20
-            //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%22' + latMin + '%22%20and%20f5362384%20%3E%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3E%3D%20%22' + lonMax +'%22';
-            //var url = 'https://musashi.cybozu.com/k/2589/?q=f5362384%20%3E=%20%22' + latMin + '%22%20and%20f5362384%20%3C%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3C%3D%20%22' + lonMax +'%22'; //◎動いた
-            //現在位置はURLパラメータ（lat、lon）として埋め込んでいる（何かに使用できるようにするため）
-            var url = 'https://musashi.cybozu.com/k/2589/?lat=' + lat + '&lon=' + lon + '&q=f5362384%20%3E=%20%22' + latMin + '%22%20and%20f5362384%20%3C%3D%20%22' + latMax + '%22%20and%20f5362385%20%3E=%20%22' + lonMin + '%22%20and%20f5362385%20%3C%3D%20%22' + lonMax +'%22';
-            //リダイレクト
-            //https://getpocket.com/redirect?url=https%3A%2F%2Fmusashi.cybozu.com%2Fk%2F2589%2F%3Fq%3Df5362384%2520%253C%3D%2520%252235%2522%2520and%2520f5362385%2520%253E%3D%2520%2522135%2522&formCheck=b2e505233ac0857b23be7a01bdce4035
-            //https://musashi.cybozu.com/k/2589/?q=f5362384%20%3C=%20%2235%22%20and%20f5362385%20%3E=%20%22135%22
-            //https://musashi.cybozu.com/k/2589/?q=f5362384 <= "35" and f5362385 >= "135"
-            // https://musashi.cybozu.com/k/2589/?view=5523623&q=f5362384 <= "35.7" and f5362384 >= "35.6" and f5362385 >= "139.5454822"#sort_0=f9157&order_0=desc&size=20
-            
-            //location.href = url;
         },
         // 取得失敗した場合
         function(error) {
