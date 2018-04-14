@@ -59,14 +59,19 @@
                   //console.log(xhr.responseXML.documentElement.getElementsByTagName("status"));
                   //console.log(xhr.responseXML.documentElement.getElementsByTagName("result"));
                   
-                  console.log(xhr.responseXML.documentElement.getElementsByTagName("pname")[0].innerHTML); //都道府県
-                  console.log(xhr.responseXML.documentElement.getElementsByTagName("mname")[0].innerHTML); //市区町村
-                  console.log(xhr.responseXML.documentElement.getElementsByTagName("section")[0].innerHTML); //セクション
+                  var 都道府県 = xhr.responseXML.documentElement.getElementsByTagName("pname")[0].innerHTML;
+                  var 市区町村 = xhr.responseXML.documentElement.getElementsByTagName("mname")[0].innerHTML;
+                  var 番地 = xhr.responseXML.documentElement.getElementsByTagName("section")[0].innerHTML;
+                  console.log(都道府県); //都道府県
+                  console.log(市区町村); //市区町村
+                  console.log(番地); //セクション
                   
                   var btn = document.createElement("button");
                   btn.setAttribute("id","testButton");
-                  btn.value = "value";
-                  btn.text = "text";
+                  //btn.value = "value";
+                  //btn.text = "text";
+                  btn.type = 'button';
+                  btn.textContent = 市区町村;
                   btn.onclick = function(){
                      console.log("onclick");
                   };
