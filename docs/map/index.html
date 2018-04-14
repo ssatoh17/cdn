@@ -50,6 +50,9 @@
                 if (xhr.status === 200) {
                   console.log(xhr.response);
                   console.log(xhr.responseXML);
+                  parser = new DOMParser();
+                  xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml");
+                  console.log(xmlDoc);
                   alert(xhr.responseXML);
                 }
               }
@@ -102,3 +105,33 @@
   <button onclick="getPosition();">位置情報を取得する</button>
 </body>
 </html>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rgeocode xmlns="http://finds.jp/ts" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <status>200</status>
+  <result>
+    <prefecture>
+      <pcode>13</pcode>
+      <pname>東京都</pname>
+    </prefecture>
+    <municipality>
+      <mname>豊島区</mname>
+      <mcode>13116</mcode>
+    </municipality>
+    <local>
+      <section>巣鴨一丁目</section>
+      <homenumber>14</homenumber>
+      <distance>38.005454763002</distance>
+      <latitude>35.733154</latitude>
+      <longitude>139.740721</longitude>
+    </local>
+  </result>
+  <argument>
+    <latitude>35.7334054</latitude>
+    <longitude>139.741006</longitude>
+    <localradius>500</localradius>
+    <localmax>1</localmax>
+  </argument>
+  <meta name="thanks" content="このサービスは 国土交通省 提供 国土数値情報(行政区域) を利用しています" />
+  <meta name="thanks" content="このサービスは 国土交通省 提供 街区レベル位置参照情報および大字・町丁目レベル位置参照情報 を利用しています" />
+</rgeocode>
