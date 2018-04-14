@@ -35,29 +35,19 @@
           
           
             var xhr = new XMLHttpRequest();
-            //xhr.open('GET', '/server', true);
             xhr.open('GET', _url, true);
-
             // If specified, responseType must be empty string or "document"
             xhr.responseType = 'document';
             //xhr.responseType = 'jsonp'; // 🔴エラー・・・（クロスドメイン対策のつもりだったが）
-
             // overrideMimeType() can be used to force the response to be parsed as XML
             xhr.overrideMimeType('text/xml');
 
-            xhr.onload = function () {
+            xhr.onload = function () 
+            {
               if (xhr.readyState === xhr.DONE) {
                 if (xhr.status === 200) {
-                  console.log("xhr.response = 下に続く");
-                  console.log(xhr.response);
-                  console.log("xhr.responseXML = 下に続く");
-                  console.log(xhr.responseXML);
-                  console.log("xhr.responseXML.documentElement = 下に続く");
                   
                   console.log(xhr.responseXML.documentElement); //🔵OK!
-                  //console.log(xhr.responseXML.documentElement.getElementsByTagName("rgeocode"));
-                  //console.log(xhr.responseXML.documentElement.getElementsByTagName("status"));
-                  //console.log(xhr.responseXML.documentElement.getElementsByTagName("result"));
                   
                   var 都道府県 = xhr.responseXML.documentElement.getElementsByTagName("pname")[0].innerHTML;
                   var 市区町村 = xhr.responseXML.documentElement.getElementsByTagName("mname")[0].innerHTML;
@@ -68,14 +58,13 @@
                   
                   var btn = document.createElement("button");
                   btn.setAttribute("id","testButton");
-                  //btn.value = "value";
-                  //btn.text = "text";
                   btn.type = 'button';
                   btn.textContent = 市区町村;
-                  btn.onclick = function(){
-                     console.log("onclick");
+                  btn.onclick = function(e){
+                     console.log(e);
+                     console.log(e.textContent);
                   };
-                  document.body.appendChild(btn);
+                  document.body.appendChild(btn); //body要素に追加
                   
                   
                   console.log(xmlDoc.documentElement);
@@ -85,17 +74,12 @@
                   //console.log(JSON.stringify(serialize(xmlDoc.children[0]), null, '  '))
                   console.log(xmlDoc.getElementsByTagName("pname"));
                   console.log(xmlDoc.getElementsByTagName("result"));
-                  console.log(xmlDoc.getElementsByTagName("rgeocode"));
-                  
-                  //console.log(xmlDoc.rgeocode);
-                  //alert(xmlDoc.documentElement);
+                  console.log(xmlDoc.getElementsByTagName("rgeocode"));                  
                 }
               }
             };
             xhr.send(null);
-          
-          
-              
+                                 
             var latMin = position.coords.latitude - k;
             var lonMin = position.coords.longitude - k;
             var latMax = position.coords.latitude + k;
