@@ -53,6 +53,8 @@
                   parser = new DOMParser();
                   xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml");
                   console.log(xmlDoc.documentElement);
+                  console.log("pname=");
+                  console.log(xmlDoc.getElementByTagName("pname"));
                   //console.log(xmlDoc.rgeocode);
                   alert(xmlDoc.documentElement);
                 }
