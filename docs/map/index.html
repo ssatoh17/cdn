@@ -52,8 +52,10 @@
                   console.log(xhr.responseXML);
                   parser = new DOMParser();
                   xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml");
+                  
                   console.log(xmlDoc.documentElement);
                   console.log("pname=");
+                  console.log(xmlDoc.children);
                   console.log(xmlDoc.getElementsByTagName("pname"));
                   console.log(xmlDoc.getElementsByTagName("result"));
                   console.log(xmlDoc.getElementsByTagName("rgeocode"));
@@ -104,6 +106,21 @@
         }
       );
     }
+          /**
+      * XML2JSObject
+      */
+      function serialize(dom) {
+        var obj = {
+          tagName: dom.tagName,
+          attributes: Array.prototype.slice.call(dom.attributes, 0, dom.attributes.length).map(function (attr) {
+            return {name: attr.name, value: attr.textContent}
+          }),
+          children: Array.prototype.map.call(dom.children, function (e) {
+            return serialize(e);
+          })
+        };
+        return obj;
+      }
   </script>
 </head>
 <body>
