@@ -57,8 +57,8 @@
                   console.log(xmlDoc.documentElement);
                   console.log("pname=");
                   console.log(xmlDoc.children);
-                  log(dom.children[0]);
-                  console.log(JSON.stringify(serialize(dom.children[0]), null, '  '))
+                  log(xmlDoc.children[0]);
+                  console.log(JSON.stringify(serialize(xmlDoc.children[0]), null, '  '))
                   console.log(xmlDoc.getElementsByTagName("pname"));
                   console.log(xmlDoc.getElementsByTagName("result"));
                   console.log(xmlDoc.getElementsByTagName("rgeocode"));
