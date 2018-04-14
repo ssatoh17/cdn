@@ -76,7 +76,8 @@
                   //xmlDoc = parser.parseFromString(xhr.documentElement, "application/xml");
                   //xmlDoc = parser.parseFromString(xhr.responseXML.documentElement, "application/xml");
                   //xmlDoc = parser.parseFromString(xml, "text/xml");
-                  xmlDoc = parser.parseFromString(xhr.responseXML.documentElement.toString(), "text/xml");
+                  //xmlDoc = parser.parseFromString(xhr.responseXML.documentElement.toString(), "text/xml");
+                  xmlDoc = parser.parseFromString(xhr.responseXML.documentElement.innerHTML, "text/xml");
                   //var r = xmlDoc.evaluate("//name", xmlDoc, null, XPathResult.ANY_TYPE, null);
                   var r = xmlDoc.evaluate("//pname", xmlDoc, null, XPathResult.ANY_TYPE, null);
                   var s = [];
