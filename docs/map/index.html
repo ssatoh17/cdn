@@ -36,7 +36,8 @@
             xhr.open('GET', _url, true);
 
             // If specified, responseType must be empty string or "document"
-            xhr.responseType = 'document';
+            //xhr.responseType = 'document';
+            xhr.responseType = 'jsonp';
 
             // overrideMimeType() can be used to force the response to be parsed as XML
             xhr.overrideMimeType('text/xml');
