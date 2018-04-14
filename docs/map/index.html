@@ -53,6 +53,7 @@
                   parser = new DOMParser();
                   xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml");
                   console.log(xmlDoc);
+                  console.log(xmlDoc.rgeocode);
                   alert(xhr.responseXML);
                 }
               }
