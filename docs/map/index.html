@@ -52,11 +52,11 @@
                   console.log(xhr.response);
                   console.log("xhr.response = 下に続く");
                   console.log(xhr.responseXML);
-                  parser = new DOMParser();
+                  var parser = new DOMParser();
                   //xmlDoc = parser.parseFromString(xhr.responseXML, "text/xml");
-                  //xmlDoc = parser.parseFromString(xhr.responseXML, "application/xml");
+                  xmlDoc = parser.parseFromString(xhr.responseXML, "application/xml");
                   //xmlDoc = parser.parseFromString(xhr.response, "application/xml");
-                  xmlDoc = parser.parseFromString(xhr.documentElement, "application/xml");
+                  //xmlDoc = parser.parseFromString(xhr.documentElement, "application/xml");
                   
                   console.log(xmlDoc.documentElement);
                   console.log("pname=");
@@ -141,7 +141,7 @@
   </script>
 </head>
 <body>
-  <h1>位置情報取得⇒kintoneアプリで周辺位置を表示する</h1>
+  <h1>位置情報取得（リバースジオコーディングもする）⇒kintoneアプリで周辺位置を表示する</h1>
   <button onclick="getPosition();">位置情報を取得する</button>
 </body>
 </html>
