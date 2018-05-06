@@ -1,7 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="UTF-8">
+	<meta charset="UTF-8">
+
+	<!-- 意味：https://webtan.impress.co.jp/e/2010/01/12/7156 -->
+	<meta http-equiv="Authorization" content="Bearer 10iU3TBW1R8uQuF2nou7uTTaqlgrPZmodvhP5349rv5">
+
   <title>Scrapboxに登録（バックグラウンドでリンクを開く）【Webアプリ】</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -17,81 +21,24 @@
     <a id="scrapboxに登録" href="https://scrapbox.io/ssatoh17/Tips?body=[ブラウザでバックグラウンドで新規タブを開くには]" target="_blank">Scrapboxに追加</a>
   	<input type="checkbox">pushbulletにも投稿する<br>
   	<br>
-    <a id="scrapboxに連続登録" href="https://scrapbox.io/ssatoh17/ScrapboxWebアプリでの登録ログ?body=test" target="_blank">Scrapboxに追加（プログラムでクリック）</a>
+		<a id="scrapboxに連続登録" href="https://scrapbox.io/ssatoh17/ScrapboxWebアプリでの登録ログ?body=test" target="_blank">Scrapboxに追加（プログラムでクリック）</a>
+		
+		<!-- クロスドメインアクセス対策 http://www.otchy.net/20090923/send-post-method-to-cross-domain-only-use-javascript/  -->
+		<form id="fomrForSrossDomainAccess">
+			<input type="submit" id="submitButton">
+		</form>
     
     未実装：<br>
     　・同時に連続投稿<br>
 		　・Google検索結果に表示する（難しいかも）<br>
 		
-		<div id="ブラウザ名"></div>
-    　
+		<div id="ブラウザ名"></div>   　
     <br>
     【更新履歴】<br>
     　・2018-04-29 Line Notify APIでタイトルをLINEの「#備忘録」グループに通知するようにした<br>
-    
-    <script>
-        //jQuery https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js のロードは済んでいるのが前提
-        
-    	var accessToken = '10iU3TBW1R8uQuF2nou7uTTaqlgrPZmodvhP5349rv5'; //公開してしまうとこのkeyが流出してしまうおそれがある
+ </p>
 
-    	function Lineに通知(msg) {
-		    var url = 'https://notify-api.line.me/api/notify';
-		    var message = msg; //'🔴関数名を日本語にすると送れないので注意！';
-			$.ajax({
-			  type: "POST",
-			  headers: {
-			  	'Content-Type':'application/x-www-form-urlencoded',
-			    'Authorization': 'Bearer ' + accessToken
-			  },
-			  url: url,
-			  data: { message: msg },
-			  success: function(rtn) {
-			  		console.log(rtn);
-			  }
-		    });
-			}
-
-    	var title = "";
-    	var body = "";
-    	
-    	//$("#title").val("テスト2018-04-28"); //これだとchangeイベントは発火しない！
-    	//$("#body").val("テスト2018-04-28_12");
-    	
-    	
-    	var a = document.getElementById("scrapboxに登録");
-    	$('#タイトル').on('change',function(e){    		
-    		title = $(this).val(); console.log(title);
-    	});
-    	$('#本文').on('change',function(e){    		
-    		body = $(this).val(); console.log(body);
-			});
-			
-    	//aタグのクリック（Enterで実行時も発火）時に自分のhref属性のURLへ変移させるクリックイベントを書く。
-    	$('#scrapboxに登録').click(function(e){
-    		console.log("クリックされました");
-    		$(this).attr('href',"https://scrapbox.io/ssatoh17/" + title + "?body=" + body);
-    		var href = $(this).attr('href',"https://scrapbox.io/ssatoh17/" + title + "?body=" + body);
-    		
-    		var href2 = "https://scrapbox.io/ssatoh17/ScrapboxWebアプリでの登録ログ?body=[" + title + "]";
-    		$('#scrapboxに連続登録').attr('href',href2);
-    		
-    		setTimeout(function(){
-    			console.log("別のaタグをクリックします（setTimeoutで実行）");
-    			$("#scrapboxに連続登録")[0].click();
-    		},500);
-    		
-    		Lineに通知(title); //🌟Lineに「Line Notifyが」通知
-    		
-    		//初期化
-    		$('#本文').val(''); //これでchangeイベントは発生しない（＝変数title,bodyは変わらない）ので安心してください
-    		$('#タイトル').focus();
-    		$('#タイトル').val('');
-    	});    	    	    		
-		
-			//ブラウザ名の表示
-			$("#ブラウザ名").text(navigator.appName + "：" + navigator.appVersion);
-		</script>
-		
-  </p>
+ <script src="postToLine.js"></script>
+ 
 </body>
 </html>
