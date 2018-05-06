@@ -8,7 +8,7 @@
 <body>
   <p>
    　🔵バックグラウンドでリンクを開く（＝URLを投げる）には拡張機能「Force Background Tab」でいけた！<br>
-   　・スマホでもバックグラウンドでタブを開ける（Safari,Chrome共に）。Safariはアプリの設定で変更できた
+   　・スマホでもバックグラウンドでタブを開ける（Safari,Chrome共に）。Safariはアプリの設定で変更できた<br>
    　・【知見】a要素をクリックするには、IDセレクタで取得しても、カギ括弧0（[0]）が必要だった $("#scrapboxに連続登録")[0].click();<br>
    　
   	<input type="text" id="タイトル" placeholder="タイトル" value=""><br>
@@ -20,31 +20,55 @@
     <a id="scrapboxに連続登録" href="https://scrapbox.io/ssatoh17/ScrapboxWebアプリでの登録ログ?body=test" target="_blank">Scrapboxに追加（プログラムでクリック）</a>
     
     未実装：<br>
-    　・同時に連続投稿
-    　・Google検索結果に表示する（難しいかも）
+    　・同時に連続投稿<br>
+		　・Google検索結果に表示する（難しいかも）<br>
+		
+		<div id="ブラウザ名"></div>
+    　
+    <br>
+    【更新履歴】<br>
+    　・2018-04-29 Line Notify APIでタイトルをLINEの「#備忘録」グループに通知するようにした<br>
     
     <script>
+        //jQuery https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js のロードは済んでいるのが前提
+        
+    	var accessToken = '10iU3TBW1R8uQuF2nou7uTTaqlgrPZmodvhP5349rv5'; //公開してしまうとこのkeyが流出してしまうおそれがある
+
+    	function Lineに通知(msg) {
+		    var url = 'https://notify-api.line.me/api/notify';
+		    var message = msg; //'🔴関数名を日本語にすると送れないので注意！';
+			$.ajax({
+			  type: "POST",
+			  headers: {
+			  	'Content-Type':'application/x-www-form-urlencoded',
+			    'Authorization': 'Bearer ' + accessToken
+			  },
+			  url: url,
+			  data: { message: msg },
+			  success: function(rtn) {
+			  		console.log(rtn);
+			  }
+		    });
+			}
+
     	var title = "";
     	var body = "";
     	
-    	//$("#title").val("テスト2018-04-28");
+    	//$("#title").val("テスト2018-04-28"); //これだとchangeイベントは発火しない！
     	//$("#body").val("テスト2018-04-28_12");
-    	//$("#scrapboxに連続登録").trigger("click");
-    	//$("#scrapboxに連続登録").click();
     	
     	
     	var a = document.getElementById("scrapboxに登録");
     	$('#タイトル').on('change',function(e){    		
-    		title = $(this).val();
-    		console.log(title);
+    		title = $(this).val(); console.log(title);
     	});
     	$('#本文').on('change',function(e){    		
-    		body = $(this).val();
-    		console.log(title);
-    	});
+    		body = $(this).val(); console.log(body);
+			});
+			
     	//aタグのクリック（Enterで実行時も発火）時に自分のhref属性のURLへ変移させるクリックイベントを書く。
     	$('#scrapboxに登録').click(function(e){
-    		//console.log("クリックされました");
+    		console.log("クリックされました");
     		$(this).attr('href',"https://scrapbox.io/ssatoh17/" + title + "?body=" + body);
     		var href = $(this).attr('href',"https://scrapbox.io/ssatoh17/" + title + "?body=" + body);
     		
@@ -52,17 +76,23 @@
     		$('#scrapboxに連続登録').attr('href',href2);
     		
     		setTimeout(function(){
-    			console.log("別のaタグをクリックします。setTimeoutで実行。");
+    			console.log("別のaタグをクリックします（setTimeoutで実行）");
     			$("#scrapboxに連続登録")[0].click();
     		},500);
+    		
+    		Lineに通知(title); //🌟Lineに「Line Notifyが」通知
     		
     		//初期化
     		$('#本文').val(''); //これでchangeイベントは発生しない（＝変数title,bodyは変わらない）ので安心してください
     		$('#タイトル').focus();
     		$('#タイトル').val('');
-    		
-    	});    		
-    </script>
+    	});    	    	    		
+		
+			//ブラウザ名の表示
+			$("#ブラウザ名").text(navigator.appName);
+
+		</script>
+		
   </p>
 </body>
 </html>
