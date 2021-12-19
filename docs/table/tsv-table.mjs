@@ -74,13 +74,21 @@ class TSVTable extends HTMLElement {
     const c = tag => document.createElement(tag);
     const tbl = c("table");
     let firstline = true;
+    let maxTdNum = 2;
     for (const s of ss) {
       const tr = c("tr");
       tbl.append(tr);
+      if(firstline) maxTdNum = s.length;
+      let tdNum = 0;
       for (const s3 of s) {
         const td = c(firstline ? "th" : "td");
         tr.appendChild(td);
         td.textContent = s3;
+        tdNum++;
+      }
+      for(let i=tdNum; i<maxTdNum; i++){
+        const td = c("td");
+        tr.appendChild(td);
       }
       tbl.appendChild(tr);
       firstline = false;
