@@ -32,7 +32,7 @@ class CSVTable extends HTMLElement {
         const td = c(firstline ? "th" : "td");
         tr.appendChild(td);
         if(s3.includes('http')){
-          td.innerHTML = `<a href="${s3}">${s3}</a>`;
+          td.innerHTML = `<a target="_blank" href="${s3}">${s3}</a>`;
         }else{          
           td.textContent = s3;
         }
