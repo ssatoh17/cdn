@@ -75,6 +75,8 @@ class TSVTable extends HTMLElement {
     const tbl = c("table");
     let firstline = true;
     let maxTdNum = 2;
+    let thead = c("thead");
+    let tbody = c("tbody");
     for (const s of ss) {
       const tr = c("tr");
       tbl.append(tr);
@@ -94,9 +96,16 @@ class TSVTable extends HTMLElement {
         const td = c("td");
         tr.appendChild(td);
       }
-      tbl.appendChild(tr);
+      if(firstline){          
+        thead.appendChild(tr);
+      }else{
+        tbody.appendChild(tr);
+      }
+      // tbl.appendChild(tr);      
       firstline = false;
     }
+    tbl.appendChild(thead);
+    tbl.appendChild(tbody);
     this.appendChild(tbl);
 
     // css
