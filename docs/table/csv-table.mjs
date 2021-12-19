@@ -31,7 +31,11 @@ class CSVTable extends HTMLElement {
       for (const s3 of s) {
         const td = c(firstline ? "th" : "td");
         tr.appendChild(td);
-        td.textContent = s3;
+        if(s3.includes('http')){
+          td.innerHTML = `<a href="${s3}">${s3}</a>`;
+        }else{          
+          td.textContent = s3;
+        }
         tdNum++;
       }
       for(let i=tdNum; i<maxTdNum; i++){
